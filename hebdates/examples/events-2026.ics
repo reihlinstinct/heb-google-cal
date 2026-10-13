@@ -1,0 +1,45 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//hebdates demo//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:hebdates-2026-0@example.invalid
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260305
+DTEND;VALUE=DATE:20260306
+SUMMARY:יום זיכרון גיל
+DESCRIPTION:תאריך עברי: 16 אדר 5786\nמקור: 2009-03-12 = 16 אדר 5769\nהאירוע מתחיל בערב שלפני התאריך הלועזי המסומן
+END:VEVENT
+BEGIN:VEVENT
+UID:hebdates-2026-1@example.invalid
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260403
+DTEND;VALUE=DATE:20260404
+SUMMARY:יום נישואין טל וספיר
+DESCRIPTION:תאריך עברי: 16 ניסן 5786\nמקור: 2008-04-21 = 16 ניסן 5768\nהאירוע מתחיל בערב שלפני התאריך הלועזי המסומן
+END:VEVENT
+BEGIN:VEVENT
+UID:hebdates-2026-2@example.invalid
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260404
+DTEND;VALUE=DATE:20260405
+SUMMARY:יום נישואין הדר ועומר
+DESCRIPTION:תאריך עברי: 17 ניסן 5786\nמקור: 2008-04-21 (בערב) = 17 ניסן 5768\nהאירוע מתחיל בערב שלפני התאריך הלועזי המסומן
+END:VEVENT
+BEGIN:VEVENT
+UID:hebdates-2026-3@example.invalid
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260707
+DTEND;VALUE=DATE:20260708
+SUMMARY:יום הולדת אלון
+DESCRIPTION:תאריך עברי: 22 תמוז 5786\nמקור: 2003-07-22 = 22 תמוז 5763\nהאירוע מתחיל בערב שלפני התאריך הלועזי המסומן
+END:VEVENT
+BEGIN:VEVENT
+UID:hebdates-2026-4@example.invalid
+DTSTAMP:20260101T000000Z
+DTSTART;VALUE=DATE:20260708
+DTEND;VALUE=DATE:20260709
+SUMMARY:יום הולדת שירה
+DESCRIPTION:תאריך עברי: 23 תמוז 5786\nמקור: 2003-07-22 (בערב) = 23 תמוז 5763\nהאירוע מתחיל בערב שלפני התאריך הלועזי המסומן
+END:VEVENT
+END:VCALENDAR
