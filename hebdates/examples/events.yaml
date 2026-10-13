@@ -1,0 +1,16 @@
+# Fictional data only. Grouped by original Gregorian date; each event states what happened on it.
+rules:                              # required, no silent defaults
+  adar_in_leap_year: adar_ii        # adar_i | adar_ii
+  day_30_in_short_month: day_29     # day_29 | first_of_next_month
+dates:
+  - date: "2003-07-22"
+    events:
+      - { type: birthday, person: אלון, evening: false }
+      - { type: birthday, person: שירה, evening: true }   # born after sunset: next Hebrew day
+  - date: "2009-03-12"
+    events:
+      - { type: memorial, person: גיל, evening: false }
+  - date: "2008-04-21"
+    events:
+      - { type: anniversary, people: [הדר, עומר], evening: true }   # one event per couple
+      - { type: anniversary, people: [טל, ספיר], evening: false } # another couple, same date: stays separate
