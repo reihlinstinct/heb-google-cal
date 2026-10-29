@@ -27,11 +27,24 @@ function fixture() {
   vm.createContext(context); vm.runInContext(source, context, {filename: 'app.js'});
   return {context, calls, elements};
 }
+function assertExternalScriptBodiesEmpty(markup) {
+  const scripts = [...markup.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)];
+  assert.ok(scripts.length > 0, 'expected script elements');
+  for (const [, attributes, body] of scripts) {
+    assert.match(attributes, /\bsrc\s*=\s*["'][^"']+["']/i, 'each script must load an external source');
+    assert.equal(body.trim(), '', 'external script elements must not contain inline code');
+  }
+}
+test('HTML structure check rejects inline app code and mixed script bodies', () => {
+  assert.throws(() => assertExternalScriptBodiesEmpty('<script>doWork()</script>'));
+  assert.throws(() => assertExternalScriptBodiesEmpty('<script src="app.js">doWork()</script>'));
+  assertExternalScriptBodiesEmpty('<script src="app.js"></script>');
+});
 test('HTML loads application before async auth callbacks, with no inline app code', () => {
   assert.ok(html.includes('<script src="app.js"></script>'));
   assert.ok(html.indexOf('src="app.js"') < html.indexOf('src="https://apis.google.com/js/api.js"'));
   assert.ok(html.indexOf('src="app.js"') < html.indexOf('src="https://accounts.google.com/gsi/client"'));
-  assert.ok(!/<script(?:\s[^>]*)?>(?!\s*<\/script>)[\s\S]*?<\/script>/.test(html.replace(/<script\b[^>]*\bsrc=[^>]*><\/script>/g, '')));
+  assertExternalScriptBodiesEmpty(html);
 });
 test('initial load defines callbacks without calendar writes or auth requests', () => {
   const {context, calls} = fixture();
