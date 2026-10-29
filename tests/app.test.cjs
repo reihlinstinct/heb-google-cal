@@ -28,7 +28,7 @@ function fixture() {
   return {context, calls, elements};
 }
 function assertExternalScriptBodiesEmpty(markup) {
-  const scripts = [...markup.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)];
+  const scripts = [...markup.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script(?:\s+[^>]*)?>/gi)];
   assert.ok(scripts.length > 0, 'expected script elements');
   for (const [, attributes, body] of scripts) {
     assert.match(attributes, /\bsrc\s*=\s*["'][^"']+["']/i, 'each script must load an external source');
@@ -39,6 +39,8 @@ test('HTML structure check rejects inline app code and mixed script bodies', () 
   assert.throws(() => assertExternalScriptBodiesEmpty('<script>doWork()</script>'));
   assert.throws(() => assertExternalScriptBodiesEmpty('<script src="app.js">doWork()</script>'));
   assertExternalScriptBodiesEmpty('<script src="app.js"></script>');
+  assert.throws(() => assertExternalScriptBodiesEmpty('<script src="app.js">doWork()</script\t\n bar>'));
+  assertExternalScriptBodiesEmpty('<script src="app.js"></script\t\n bar>');
 });
 test('HTML loads application before async auth callbacks, with no inline app code', () => {
   assert.ok(html.includes('<script src="app.js"></script>'));
