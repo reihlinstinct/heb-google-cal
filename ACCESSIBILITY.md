@@ -7,7 +7,7 @@ user-facing content and interfaces.
 
 - Semantic markup and keyboard-navigable interfaces.
 - Readable contrast and scalable text.
-- The project ships a web UI / site. We check it with automated accessibility tests in Chrome and WebKit (Safari) in CI, and review visual changes on desktop and mobile.
+- The project ships a web UI. CI runs automated JavaScript regression tests; accessibility checks are manual today (semantic markup, keyboard navigation, contrast), reviewed on desktop and mobile.
 
 ## Known limitations
 
