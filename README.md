@@ -1,5 +1,7 @@
 # Hebrew Google Calendar Events
 
+[![CI](https://github.com/reihlinstinct/heb-google-cal/actions/workflows/ci.yml/badge.svg)](https://github.com/reihlinstinct/heb-google-cal/actions/workflows/ci.yml)
+
 A simple web tool to manage and duplicate Hebrew calendar events in your Google Calendar.
 
 ## The Problem
