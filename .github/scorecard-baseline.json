@@ -1,0 +1,13 @@
+{
+ "version": 1,
+ "findings": [
+  {
+   "path": ".github/workflows/scorecard.yml",
+   "rule": "job-write",
+   "scope": "analysis",
+   "evidence": "security-events: write",
+   "issue": "https://github.com/reihlinstinct/heb-google-cal/issues/2",
+   "reason": "Approved job-scoped SARIF upload to GitHub code scanning; no code or secrets write."
+  }
+ ]
+}
