@@ -2,8 +2,16 @@ name: JavaScript regression tests
 on:
   push:
   pull_request:
+  schedule:
+    # Weekly full suite: Sunday 06:00 Israel winter time (04:00 UTC;
+    # runs 07:00 IDT in summer).
+    - cron: '0 4 * * 0'
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
 jobs:
   test:
     runs-on: ubuntu-24.04
