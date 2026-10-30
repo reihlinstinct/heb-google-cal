@@ -1,5 +1,7 @@
 # Hebrew Google Calendar Events
 
+[![CI](https://github.com/reihlinstinct/heb-google-cal/actions/workflows/ci.yml/badge.svg)](https://github.com/reihlinstinct/heb-google-cal/actions/workflows/ci.yml)
+
 A simple web tool to manage and duplicate Hebrew calendar events in your Google Calendar.
 
 ## The Problem
@@ -22,3 +24,15 @@ This is a purely client-side application built with:
 - **Google Calendar API** for calendar integration.
 - **Hebcal.js** for Hebrew date calculations.
 - **Bootstrap** for styling.
+
+## Security checks and local tests
+
+Application JavaScript is in `docs/app.js` so static analysis can inspect it. The
+HTML loads it before the asynchronous Google API scripts, preserving the global
+callbacks. Authorization and revocation log generic status only, never tokens.
+
+Run `node --check docs/app.js` and `node --test tests/app.test.cjs` with Node 22 or
+newer. Tests use synthetic browser and Google API objects without network access,
+authorization, or calendar changes. The read-only CI workflow runs these tests.
+A zero-alert scanning page is not proof of coverage: confirm a completed CodeQL
+JavaScript analysis of the current default branch.
