@@ -1,4 +1,6 @@
       // Client ID and API key from the Developer Console
+      // Section: Configuration and DOM references
+
       var CLIENT_ID = '133534839514-6srelmk6gbv1h0abll2q70q614g8v93b.apps.googleusercontent.com';
 
       // Array of API discovery doc URLs for APIs used by the quickstart
@@ -25,6 +27,8 @@
     let gapiInited;
     let gisInited;
 
+
+    // Section: Google API setup and authorization
 
     function checkBeforeStart() {
        if (gapiInited && gisInited){
@@ -141,6 +145,8 @@
        *
        * @param {string} message Text to be placed in pre element.
        */
+    // Section: DOM helpers
+
       function appendPre(message) {
         var pre = document.getElementById('content');
         var textContent = document.createTextNode(message + '\n');
@@ -162,6 +168,8 @@
       function getSelectedValue(selectElement) {
         return selectElement.options[selectElement.selectedIndex].value;
       }
+
+    // Section: Calendar data
 
       function getCalendars() {
         return gapi.client.calendar.calendarList.list({
@@ -226,6 +234,8 @@
         }
         countEventsFromYear(selector,paragraph);
       }
+
+    // Section: Event actions
 
       function deleteTargetYearEvents() {
         getEventsByYear(getSelectedValue(toYear_select))
