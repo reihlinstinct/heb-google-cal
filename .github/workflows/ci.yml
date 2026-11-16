@@ -1,0 +1,26 @@
+name: JavaScript regression tests
+on:
+  push:
+  pull_request:
+  schedule:
+    # Weekly full suite: Sunday 06:00 Israel winter time (04:00 UTC;
+    # runs 07:00 IDT in summer).
+    - cron: '0 4 * * 0'
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.ref != 'refs/heads/master' }}
+
+jobs:
+  test:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - name: Check application syntax
+        run: node --check docs/app.js
+      - name: Run synthetic application regressions
+        run: node --test tests/app.test.cjs
